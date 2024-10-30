@@ -15,8 +15,34 @@ return {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     opts = function()
-      local nvconf = require "nvchad.configs.nvimtree"
-      nvconf.filters = { dotfiles = true }
+      local config = require "nvchad.configs.nvimtree"
+      config.filters = {
+        dotfiles = true,
+        custom = {
+          "node_modules",
+          "target",
+          "vendor",
+          "__pycache__",
+          ".venv"
+        },
+      }
+      return config
+    end,
+  },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    cmd = "Telescope",
+    opts = function()
+      local config = require "nvchad.configs.telescope"
+      config.defaults.file_ignore_patterns = {
+        "node_modules",
+        "target",
+        "vendor",
+        "__pycache__",
+        ".venv",
+      }
     end,
   },
 
