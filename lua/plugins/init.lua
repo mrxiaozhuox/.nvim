@@ -12,6 +12,15 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      local nvconf = require "nvchad.configs.nvimtree"
+      nvconf.filters = { dotfiles = true }
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
