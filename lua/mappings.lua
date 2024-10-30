@@ -33,8 +33,11 @@ map("n", "<leader>cv", function ()
   require("crates").focus_popup()
 end, { desc = "crates tootle crate versions popup" })
 
--- copilot
-vim.api.nvim_set_keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, expr = true, desc = "copilot accept change" })
+-- Symbols Outline
+map("n" ,"<C-/>", '<cmd> AerialToggle<CR>', { desc = "outline toggle" })
+map("n", "<leader>o", function ()
+  require("aerial").focus()
+end, { desc = "outline focus" })
 
 local nomap = vim.keymap.del
 

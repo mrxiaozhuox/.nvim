@@ -63,6 +63,20 @@ return {
   { "andweeb/presence.nvim", lazy = false },
 
   {
+    'stevearc/aerial.nvim',
+    lazy = false,
+    opts = {
+      layout = {
+        min_width = 20,
+      }
+    },
+    dependencies = {
+       "nvim-treesitter/nvim-treesitter",
+       "nvim-tree/nvim-web-devicons"
+    },
+  },
+
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
@@ -122,14 +136,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("crates").setup()
-    end,
-  },
-
-  {
-    "github/copilot.vim",
-    lazy = false,
-    config = function()
-      vim.g.copilot_no_tab_map = true
     end,
   },
 }

@@ -14,6 +14,7 @@ M.nvdash = {
 }
 
 M.term = {
+  sizes = { sp = 0.3, vsp = 0.25, ["bo sp"] = 0.3, ["bo vsp"] = 0.2 },
   float = {
     relative = 'editor',
     row = 0.2,
@@ -21,7 +22,7 @@ M.term = {
     width = 0.6,
     height = 0.55,
     border = "single",
-  }
+  },
 }
 
 return M
