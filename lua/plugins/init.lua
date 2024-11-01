@@ -56,6 +56,7 @@ return {
         "html",
         "css",
         "javascript",
+        "twig",
       },
     },
   },
