@@ -15,18 +15,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     opts = function()
-      local config = require "nvchad.configs.nvimtree"
-      config.filters = {
-        dotfiles = true,
-        custom = {
-          "node_modules",
-          "target",
-          "vendor",
-          "__pycache__",
-          ".venv",
-        },
-      }
-      return config
+      return require "configs.nvimtree"
     end,
   },
 
@@ -57,6 +46,9 @@ return {
         "css",
         "javascript",
         "twig",
+        "markdown",
+        "markdown_inline",
+        "regex"
       },
     },
   },
@@ -85,38 +77,7 @@ return {
       "rcarriga/nvim-notify",
     },
     config = function()
-      require("noice").setup {
-        lsp = {
-          hover = {
-            enabled = false,
-          },
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
-          },
-          signature = {
-            enabled = false,
-          },
-        },
-
-        presets = {
-          command_palette = true,
-          long_message_to_split = true,
-        },
-
-        routes = {
-          -- hidden error message rust-lang/rust-analyzer#17289
-          {
-            filter = {
-              event = "notify",
-              error = true,
-              find = "Invalid offset LineCol",
-            },
-            opts = { skip = true },
-          },
-        },
-      }
+      require "configs.noice"
     end,
   },
 
