@@ -23,7 +23,7 @@ return {
           "target",
           "vendor",
           "__pycache__",
-          ".venv"
+          ".venv",
         },
       }
       return config
@@ -64,16 +64,16 @@ return {
   { "andweeb/presence.nvim", lazy = false },
 
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     lazy = false,
     opts = {
       layout = {
         min_width = 20,
-      }
+      },
     },
     dependencies = {
-       "nvim-treesitter/nvim-treesitter",
-       "nvim-tree/nvim-web-devicons"
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
     },
   },
 
@@ -103,6 +103,18 @@ return {
         presets = {
           command_palette = true,
           long_message_to_split = true,
+        },
+
+        routes = {
+          -- hidden error message rust-lang/rust-analyzer#17289
+          {
+            filter = {
+              event = "notify",
+              error = true,
+              find = "Invalid offset LineCol",
+            },
+            opts = { skip = true },
+          },
         },
       }
     end,
