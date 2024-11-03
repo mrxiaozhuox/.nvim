@@ -1,3 +1,4 @@
+-- based on nvchad config
 local config = require "nvchad.configs.nvimtree"
 
 config.filters = {

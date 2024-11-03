@@ -15,7 +15,7 @@ require("noice").setup {
 
   presets = {
     command_palette = true,
-    -- long_message_to_split = true,
+    long_message_to_split = true,
   },
   views = {
     split = {
@@ -26,14 +26,13 @@ require("noice").setup {
   },
 
   routes = {
-
     {
       filter = {
-        min_length = 200,
+        event = "notify",
+        find = "No information available",
       },
-      view = "split",
+      opts = { skip = true },
     },
-
     -- hidden error message rust-lang/rust-analyzer#17289
     {
       filter = {
