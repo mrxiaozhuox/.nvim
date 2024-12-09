@@ -17,7 +17,7 @@ for _, method in ipairs { "textDocument/diagnostic", "workspace/diagnostic" } do
   end
 end
 
-local servers = { "rust_analyzer", "pyright" }
+local servers = { "rust_analyzer", "pyright", "gopls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config

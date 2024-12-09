@@ -36,6 +36,11 @@ vim.schedule(function()
   require "mappings"
 end)
 
+-- configure
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+
 -- rebind lsp keymap
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
