@@ -5,40 +5,19 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
+    language = "Chinese",
     strategies = {
-      chat = {
-        slash_commands = {
-          ["file"] = {
-            callback = "strategies.chat.slash_commands.file",
-            description = "Select a file",
-            opts = {
-              provider = "fzf_lua", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
-              contains_code = true,
-            },
+      chat = {},
+      inline = {
+        keymaps = {
+          accept_change = {
+            modes = { n = "<leader>aa" },
+            description = "Accept the suggested change",
           },
-          ["help"] = {
-            callback = "strategies.chat.slash_commands.help",
-            description = "Select help docs",
-            opts = {
-              provider = "fzf_lua", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
-              contains_code = true,
-            },
-          },
-          ["buffer"] = {
-            callback = "strategies.chat.slash_commands.buffer",
-            description = "Select a buffer",
-            opts = {
-              provider = "fzf_lua", -- Other options include 'default', 'mini_pick', 'fzf_lua', snacks
-              contains_code = true,
-            },
-          },
-          ["symbols"] = {
-            callback = "strategies.chat.slash_commands.symbols",
-            description = "Insert symbols for a selected file",
-            opts = {
-              contains_code = true,
-              provider = "fzf_lua", -- default|telescope|mini_pick|fzf_lua
-            },
+          reject_change = {
+            modes = { n = "<leader>ar" },
+            opts = { nowait = true },
+            description = "Reject the suggested change",
           },
         },
       },
@@ -46,9 +25,7 @@ return {
     display = {
       diff = {
         enabled = true,
-        close_chat_at = 240, -- Close an open chat buffer if the total columns of your display are less than...
-        opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
-        provider = "mini_diff", -- default|mini_diff
+        provider = "mini_diff",
       },
     },
     adapters = {
@@ -64,11 +41,19 @@ return {
   keys = {
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
     {
-      "<leader>aa",
+      "<leader>ac",
       function()
         return vim.cmd("CodeCompanionChat")
       end,
-      desc = "Toggle (CodeCompanionChat)",
+      desc = "Toggle Chat",
+      mode = { "n", "v" },
+    },
+    {
+      "<leader>ap",
+      function()
+        return vim.cmd("CodeCompanionActions")
+      end,
+      desc = "Toggle Actions",
       mode = { "n", "v" },
     },
   },
